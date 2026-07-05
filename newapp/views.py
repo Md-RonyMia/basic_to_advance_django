@@ -9,3 +9,5 @@ def Courses(request):
 def About(request):
     return HttpResponse('This is about page.')
 
+def Index(request):
+    return render(request,'index.html')
