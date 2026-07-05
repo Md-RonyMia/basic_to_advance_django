@@ -7,8 +7,15 @@
 </head>
 <body>
     <h1>I am inside from the newapp</h1>
-    <h1>Author : {{name}}</h1>
+    <h1>Name : {{name}}</h1>
     <h1>Age : {{age}}</h1>
+    {% if age >= 20 %}
+    <h1>You are eligible for driving license</h1>
+    {% elif age < 19 and age > 10 %}
+    <h1>You are not eligible</h1>
+    {% else %}
+    <h1>You are a child</h1>
+     {% endif %}
 
 </body>
 </html>
