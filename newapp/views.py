@@ -10,5 +10,15 @@ def About(request):
     return HttpResponse('This is about page.')
 
 def Index(request):
-    data={'name':'karim','age':18,'lst':['python','is','best']}
-    return render(request,'index.html',data)
+    data=[{
+        "id":1,
+        "name":'habib',
+        "title":'Engineer'
+        },
+        {
+        "id":2,
+        "name":'karim',
+        "title":'Doctor'
+        }
+    ]
+    return render(request,'index.html',{'data':data})
