@@ -10,4 +10,5 @@ def About(request):
     return HttpResponse('This is about page.')
 
 def Index(request):
-    return render(request,'index.html')
+    data={'name':'karim','age':20}
+    return render(request,'index.html',data)
