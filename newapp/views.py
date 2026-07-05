@@ -6,8 +6,8 @@ def Courses(request):
     return HttpResponse('This is course page.')
 
 
-def About(request):
-    return HttpResponse('This is about page.')
+def About(request,i_d):
+    return render(request,'about.html',{'i_d':i_d})
 
 def Index(request):
     data=[{
