@@ -24,5 +24,9 @@ def Index(request):
 
 
 def user_form(request):
-    print(request.POST)
-    return render(request,'form.html')
+    if request.method=='POST':
+        username=request.POST['username']
+        email=request.POST['email']
+        return render(request,'form.html',{'name':username,'email':email})
+    else:
+        return render(request,'form.html')
