@@ -7,8 +7,16 @@ def Courses(request):
 
 
 def About(request):
-    return render(request, 'about.html', {'i_d': request.GET})
-
+    if request.method=='GET':
+        username=request.POST['username']
+        email=request.POST['email']
+        return render(request,'about.html',{'name':username,'email':email})
+    else:
+        return render(request,'about.html')
+         
+        
+        
+         
 
 def Index(request):
     data = [{
@@ -24,9 +32,4 @@ def Index(request):
 
 
 def user_form(request):
-    if request.method=='POST':
-        username=request.POST['username']
-        email=request.POST['email']
-        return render(request,'form.html',{'name':username,'email':email})
-    else:
         return render(request,'form.html')
