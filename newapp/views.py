@@ -21,3 +21,8 @@ def Index(request):
         "title": 'Doctor'
     }]
     return render(request, 'index.html', {'data': data})
+
+
+def user_form(request):
+    print(request.POST)
+    return render(request,'form.html')
