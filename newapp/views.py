@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import ContactForm
+from .forms import StudentForm
+from .models import Student
 
 # Create your views here.
 def Courses(request):
@@ -37,13 +38,7 @@ def user_form(request):
 
 
 def Django_form(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-    else:
-        form = ContactForm()
-
-    return render(request, 'django_form.html', {'form': form})
+    std=Student.objects.all()
+    return render(request, 'django_form.html',{'data':std})
 
           
