@@ -37,18 +37,13 @@ def user_form(request):
 
 
 def Django_form(request):
-    if request.method=='POST':
-        form=ContactForm(request.POST,request.FILES)
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
         if form.is_valid():
-            file=form.cleaned_data['file']
-            with open('./newapp/upload/'+file.name,'wb+') as destination:
-                for chunk in file.chunks():
-                    destination.write(chunk)
-
             print(form.cleaned_data)
-            return render(request,'django_form.html',{'form':form})
     else:
-        form=ContactForm()
-        return render(request,'django_form.html',{'form':form})
+        form = ContactForm()
+
+    return render(request, 'django_form.html', {'form': form})
 
           
