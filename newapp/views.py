@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import ContactForm
 
 # Create your views here.
 def Courses(request):
@@ -7,7 +8,7 @@ def Courses(request):
 
 
 def About(request):
-    if request.method=='GET':
+    if request.method=='POST':
         username=request.POST['username']
         email=request.POST['email']
         return render(request,'about.html',{'name':username,'email':email})
@@ -33,3 +34,11 @@ def Index(request):
 
 def user_form(request):
         return render(request,'form.html')
+
+
+def Django_form(request):
+    form=ContactForm(request.POST)
+    if form.is_valid():
+        print(form.cleaned_data)
+    return render(request,'django_form.html',{'form':form})
+          
