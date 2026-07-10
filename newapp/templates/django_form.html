@@ -17,6 +17,8 @@
       <th scope="col">Name</th>
       <th scope="col">Roll</th>
       <th scope="col">Age</th>
+      <th scope="col">Action</th>
+
     </tr>
   </thead>
   <tbody>
@@ -25,6 +27,7 @@
       <td>{{std.name}}</td>
       <td>{{std.roll}}</td>
       <td>{{std.age}}</td>
+      <td><a class="btn btn-danger text-white" href="{% url 'delete' std.roll %}">Delete</a></td>
     </tr>
     {% endfor %}
   </tbody>

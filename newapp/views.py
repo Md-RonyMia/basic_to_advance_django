@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import StudentForm
 from .models import Student
@@ -40,5 +40,9 @@ def user_form(request):
 def Django_form(request):
     std=Student.objects.all()
     return render(request, 'django_form.html',{'data':std})
+
+def delete_student(request,roll):
+     student=Student.objects.get(pk=roll).delete()
+     return redirect("django_form")
 
           
