@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row g-4">
+
+        {% for item in all_post %}
+        <div class="col-lg-4 col-md-6">
+            <div class="card shadow-sm h-100 border-0">
+
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">{{ item.title }}</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-3">
+                        {{ item.content|truncatewords:25 }}
+                    </p>
+
+                    <p class="mb-3">
+                        <strong>Author:</strong>
+                        <span class="badge bg-primary">
+                            {{ item.author.name }}
+                        </span>
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>Categories</strong>
+                    </p>
+
+                    {% for cat in item.category.all %}
+                        <span class="badge bg-warning text-dark me-1 mb-2">
+                            {{ cat.name }}
+                        </span>
+                    {% endfor %}
+
+                </div>
+
+                <div class="card-footer bg-white border-0 d-flex justify-content-between">
+
+                    <a href="{% url 'edit' item.id %}" class="btn btn-outline-primary btn-sm">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'delete' item.id %}" class="btn btn-outline-danger btn-sm">
+                        Delete
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
