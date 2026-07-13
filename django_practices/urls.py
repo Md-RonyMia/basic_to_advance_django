@@ -20,10 +20,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),
-    path('profile/', include('Profile.urls')),
-    path('category/', include('Category.urls')),
-    path('post/', include('Post.urls')),
-    path('author/', include('Author.urls')),
+    path('',include('newapp.urls')),
+    # path('', include('core.urls')),
+    # path('profile/', include('Profile.urls')),
+    # path('category/', include('Category.urls')),
+    # path('post/', include('Post.urls')),
+    # path('author/', include('Author.urls')),
     
 ]

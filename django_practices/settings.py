@@ -37,11 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Profile',
-    'Author',
-    'Category',
-    'Post',
-    'core',
+    'newapp',
     "crispy_forms",
     "crispy_bootstrap5",
 ]
