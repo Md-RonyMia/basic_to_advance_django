@@ -13,8 +13,7 @@
       {% if user.is_authenticated %}
       <h1>{{request.user}}</h1>
       <a class="btn btn-primary" href="">Profile</a>
-      <a class="btn btn-danger" href="">Logout</a>
-      {% else %}
+ <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>      {% else %}
       <a class="btn btn-success" href="">Login</a>
       <a class="btn btn-success" href="">SignUp</a>
       {% endif %}
