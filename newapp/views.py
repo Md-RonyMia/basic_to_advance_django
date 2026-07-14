@@ -57,3 +57,15 @@ def pass_change(request):
     else:
         form=PasswordChangeForm(user=request.user)
     return render(request,'passchange.html',{'form':form})
+
+
+def change_pass(request):
+    if request.method=='POST':
+        form=SetPasswordForm(user=request.user,data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request,request.user)
+            return redirect('profile')
+    else:
+        form=SetPasswordForm(user=request.user)
+    return render(request,'passchange.html',{'form':form})
