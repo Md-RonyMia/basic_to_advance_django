@@ -52,7 +52,7 @@ def pass_change(request):
         form=PasswordChangeForm(user=request.user,data=request.POST)
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request,form.user)
+            update_session_auth_hash(request,request.user)
             return redirect('profile')
     else:
         form=PasswordChangeForm(user=request.user)
