@@ -1,4 +1,4 @@
-{% load crispy_forms_tags %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,8 +13,9 @@
       <form method="post">
         {% csrf_token %}
           {% for fm in form%}
-          {{fm|as_crispy_field}}
-          {{ fm.errors|striptags }}
+          {{fm.label}}
+          {{fm}}
+          {{ fm.errors}}
           {% endfor %}
         <button type="submit" class="btn btn-primary">Create</button>
       </form>
