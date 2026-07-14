@@ -1,14 +1,41 @@
-from django.shortcuts import render
-
-# Create your views here.
+from django.shortcuts import render, redirect
 from .forms import UserCreate
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login
 
-def HOME(request):
+
+def sign_up(request):
     if request.method == 'POST':
-        form=UserCreate(request.POST)
+        form = UserCreate(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)   # Better than request.POST
-            form.save(commit=False)
+            form.save()
+            messages.success(request, 'Account created successfully.')
+            return redirect('login')   # Redirect after successful signup
     else:
-        form=UserCreate()
-    return render(request,'add_user.html',{'form':form})
+        form = UserCreate()
+
+    return render(request, 'signup.html', {'form': form})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request=request, data=request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('profile')
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'login.html', {'form': form})
+
+
+def profile(request):
+    return render(request, 'profile.html')
